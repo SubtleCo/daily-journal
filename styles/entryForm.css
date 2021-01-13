@@ -1,0 +1,16 @@
+#entryForm > fieldset {
+    display: flex;
+    flex-direction: column;
+    border: 0;
+}
+
+.input-left {
+    align-self: flex-start;
+}
+
+#entryForm__submit{
+    flex-basis: 20%;
+    align-self: flex-end;
+    margin-top: 10px;
+    background-color: rgb(198, 224, 238);
+}
