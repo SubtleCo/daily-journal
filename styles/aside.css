@@ -1,0 +1,16 @@
+.containerRight > h3 {
+    text-align: center;
+    /* border: 1px dotted black; */
+}
+
+.containerRight__entryList {
+    list-style: none;
+    /* border: 1px dotted black; */
+    padding: 0;
+}
+
+.entryList__item {
+    /* border: 1px dotted black; */
+    margin: 10px auto;
+    text-align: center;
+}

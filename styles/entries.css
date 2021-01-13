@@ -1,0 +1,39 @@
+.containerLeft__entries {
+    /* border: 1px dotted black; */
+}
+
+.entry {
+    /* border: 1px dotted black; */
+    padding-bottom: 20px;
+}
+
+.entry__header {
+    display: flex;
+}
+
+.entry__concepts {
+    flex: 5 1 auto;
+}
+
+.entry__header__right {
+    flex: 1 1 auto;
+}
+
+.entry__buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button {
+    margin: 5px;
+    border: 1px solid rgb(59, 59, 59);
+    border-radius: 2px;
+}
+
+.button-normal {
+    background-color: rgb(252, 249, 210);
+}
+
+.button-warn {
+    background-color:rgb(242, 180, 180);
+}
