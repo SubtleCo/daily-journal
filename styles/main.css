@@ -34,7 +34,7 @@ h1,h2,h3,h4,h5,h6 {
 
 .containerRight {
 	margin-top: 10px;
-	flex: 0 1 auto%;
+	flex: 0 1 auto;
 	justify-self: center;
 }
 
