@@ -35,6 +35,15 @@ export const JournalFormComponent = () => {
     targetElement.innerHTML = journalForm
 }
 
+eventHub.addEventListener("input", e => {
+    if (e.target.id === "concepts") {
+        const entryLength = document.querySelector("#concepts").value.length
+        if (entryLength > 25) {
+            alert("Dude, that's too many characters.")
+        }
+    }
+})
+
 eventHub.addEventListener("click", e => {
     if (e.target.id === "entryForm__submit") {
         e.preventDefault()
@@ -44,7 +53,16 @@ eventHub.addEventListener("click", e => {
             entry: document.querySelector("#entryContent").value,
             mood: document.querySelector("#mood").value,
         }
+        scanForLanguage(document.querySelector("#concepts").value)
+        scanForLanguage(document.querySelector("#entryContent").value)
         document.querySelector("#entryForm").reset()
         saveJournalEntry(newEntryObj)
     }
 })
+
+const scanForLanguage = (text) => {
+    const re = /bad word/;
+    if(re.test(text)) {
+        alert("No bad words please!")
+    }
+}

@@ -27,6 +27,27 @@
       "entry": "asdfasdf",
       "mood": "mind-blown",
       "id": 4
+    },
+    {
+      "date": "",
+      "concept": "bad word ok",
+      "entry": "",
+      "mood": "mind-blown",
+      "id": 5
+    },
+    {
+      "date": "",
+      "concept": "fine",
+      "entry": "This should be fine",
+      "mood": "mind-blown",
+      "id": 6
+    },
+    {
+      "date": "",
+      "concept": "this should not",
+      "entry": "this contains a bad word",
+      "mood": "mind-blown",
+      "id": 7
     }
   ]
 }
