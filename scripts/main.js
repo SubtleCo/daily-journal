@@ -1,5 +1,5 @@
 import { EntryList } from "./journal/JournalEntryList.js"
+import { JournalFormComponent } from "./JournalForm.js";
 
-console.log("Welcome to the main module")
-
+JournalFormComponent();
 EntryList();
