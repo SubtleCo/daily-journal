@@ -1,4 +1,7 @@
+import { saveJournalEntry } from './JournalDataProvider.js'
+
 const targetElement = document.querySelector('.containerLeft__entryForm')
+const eventHub = document.querySelector('#container')
 
 export const JournalFormComponent = () => {
 
@@ -31,3 +34,17 @@ export const JournalFormComponent = () => {
 
     targetElement.innerHTML = journalForm
 }
+
+eventHub.addEventListener("click", e => {
+    if (e.target.id === "entryForm__submit") {
+        e.preventDefault()
+        const newEntryObj = {
+            date: document.querySelector("#journalDate").value,
+            concept: document.querySelector("#concepts").value,
+            entry: document.querySelector("#entryContent").value,
+            mood: document.querySelector("#mood").value,
+        }
+        document.querySelector("#entryForm").reset()
+        saveJournalEntry(newEntryObj)
+    }
+})
