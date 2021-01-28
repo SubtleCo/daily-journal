@@ -35,6 +35,15 @@ export const JournalFormComponent = () => {
     targetElement.innerHTML = journalForm
 }
 
+eventHub.addEventListener("input", e => {
+    if (e.target.id === "concepts") {
+        const entryLength = document.querySelector("#concepts").value.length
+        if (entryLength > 25) {
+            alert("Dude, that's too many characters.")
+        }
+    }
+})
+
 eventHub.addEventListener("click", e => {
     if (e.target.id === "entryForm__submit") {
         e.preventDefault()
