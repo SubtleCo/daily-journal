@@ -1,4 +1,5 @@
 import { getMoods, useMoods } from '../moods/MoodProvider.js'
+import { getInstructors, useInstructors } from '../instructors/InstructorProvider.js'
 import { saveJournalEntry } from './JournalDataProvider.js'
 
 const targetElement = document.querySelector('.containerLeft__entryForm')
@@ -6,10 +7,14 @@ const eventHub = document.querySelector('#container')
 
 
 export const JournalFormComponent = () => {
-    getMoods().then(
+    getMoods()
+    .then(getInstructors)
+    .then(
         () => {
             const moods = useMoods()
+            const instructors = useInstructors()
             const moodSelectHTML = moods.map(mood => `<option value"${mood.id}">${mood.emoji} ${mood.label}</option>`).join("")
+            const instructorSelectHTML = instructors.map(instructor => `<option value="${instructor.id}">${instructor.first_name}</option>`).join("")
             const journalForm =  `
                 <form class="containterLeft__entryForm" id="entryForm" action="">
                     <fieldset>
@@ -17,7 +22,13 @@ export const JournalFormComponent = () => {
                         <input type="date" name="journalDate" id="journalDate" class="input-left">
                         <label for="mood">Mood</label>
                         <select name="mood" id="mood" form="entryForm" class="input-left">
+                            <option value="0">Pick A Mood</option>
                             ${moodSelectHTML}
+                            </select>
+                        <label for="instructor">Instructor</label>
+                        <select name="instructor" id="instructor" form="entryForm" class="input-left">
+                            <option value="0">Pick An Instructor</option>
+                            ${instructorSelectHTML}
                         </select>
                         <label for="concepts">Concepts Covered</label>
                         <input type="text" name="concepts" id="concepts" class="input-left" size="50">
@@ -49,7 +60,8 @@ eventHub.addEventListener("click", e => {
             date: document.querySelector("#journalDate").value,
             concept: document.querySelector("#concepts").value,
             entry: document.querySelector("#entryContent").value,
-            mood: document.querySelector("#mood").value,
+            moodId: document.querySelector("#mood").value,
+            instructorId: document.querySelector("#mood").value
         }
         scanForLanguage(document.querySelector("#concepts").value)
         scanForLanguage(document.querySelector("#entryContent").value)
