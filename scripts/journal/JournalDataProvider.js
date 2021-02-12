@@ -31,3 +31,10 @@ export const saveJournalEntry = (entryObj) => {
         .then( () => getJournalEntries())
         .then(dispatchStateChangeEvent)
 }
+
+export const deleteJournalEntry = entryId => {
+    return fetch(`http://localhost:8088/entries/${entryId}`, {
+        method: "DELETE"
+    })
+    .then(dispatchStateChangeEvent)
+}

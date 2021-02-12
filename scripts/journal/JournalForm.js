@@ -13,7 +13,7 @@ export const JournalFormComponent = () => {
         () => {
             const moods = useMoods()
             const instructors = useInstructors()
-            const moodSelectHTML = moods.map(mood => `<option value"${mood.id}">${mood.emoji} ${mood.label}</option>`).join("")
+            const moodSelectHTML = moods.map(mood => `<option value="${mood.id}">${mood.emoji} ${mood.label}</option>`).join("")
             const instructorSelectHTML = instructors.map(instructor => `<option value="${instructor.id}">${instructor.first_name}</option>`).join("")
             const journalForm =  `
                 <form class="containterLeft__entryForm" id="entryForm" action="">
@@ -60,8 +60,8 @@ eventHub.addEventListener("click", e => {
             date: document.querySelector("#journalDate").value,
             concept: document.querySelector("#concepts").value,
             entry: document.querySelector("#entryContent").value,
-            moodId: document.querySelector("#mood").value,
-            instructorId: document.querySelector("#mood").value
+            moodId: parseInt(document.querySelector("#mood").value),
+            instructorId: parseInt(document.querySelector("#instructor").value)
         }
         scanForLanguage(document.querySelector("#concepts").value)
         scanForLanguage(document.querySelector("#entryContent").value)
@@ -76,3 +76,4 @@ const scanForLanguage = (text) => {
         alert("No bad words please!")
     }
 }
+
