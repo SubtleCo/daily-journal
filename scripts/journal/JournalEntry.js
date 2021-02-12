@@ -1,3 +1,7 @@
+import { deleteJournalEntry } from "./JournalDataProvider.js"
+
+const eventHub = document.querySelector('#container')
+
 export const JournalEntryComponent = (entry) => {
     return `
         <article class="entry">
@@ -11,9 +15,17 @@ export const JournalEntryComponent = (entry) => {
             </div> <!-- entry__header -->
             <p class="entry__text">${entry.entry}</p>
             <div class="entry__buttons">
-                <button class="button button-normal">Edit</button>
-                <button class="button button-warn">Delete</button>
+                <button id="editButton--${entry.id}" class="button button-normal">Edit</button>
+                <button id="deleteButton--${entry.id}" class="button button-warn">Delete</button>
             </div> <!-- entry__buttons -->
         </article> <!-- entry -->
+        <div class="divider"></div>
         `
 }
+
+eventHub.addEventListener("click", e => {
+  if (e.target.id.includes("deleteButton--")) {
+      const [prefix, entryId] = e.target.id.split("--")
+      deleteJournalEntry(entryId)
+  }  
+})

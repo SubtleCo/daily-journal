@@ -32,3 +32,9 @@
 .button-warn {
     background-color:rgb(242, 180, 180);
 }
+
+.divider {
+    background-color: black;
+    width: 80%;
+    height: 1px;
+}
