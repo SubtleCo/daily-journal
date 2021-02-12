@@ -7,7 +7,7 @@ const dispatchStateChangeEvent = () => {
 let journal = []
 
 export const getJournalEntries = () => {
-    return fetch("http://localhost:8088/entries?_expand=mood")
+    return fetch("http://localhost:8088/entries?_expand=mood&_expand=instructor")
             .then( res => res.json())
             .then( entries => journal = entries)
 }
