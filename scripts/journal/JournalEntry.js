@@ -6,6 +6,7 @@ export const JournalEntryComponent = (entry) => {
                 <div class="entry__header__right">
                     <h4 class="entry__mood">${entry.mood.emoji} ${entry.mood.label}</h4>
                     <h5 class="entry__date">${entry.date}</h5>
+                    <h5 class="entry__instructor">${entry.instructor.first_name}
                 </div>  <!-- entry__header -->
             </div> <!-- entry__header -->
             <p class="entry__text">${entry.entry}</p>
