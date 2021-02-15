@@ -26,6 +26,23 @@ export const JournalEntryComponent = (entry) => {
 eventHub.addEventListener("click", e => {
   if (e.target.id.includes("deleteButton--")) {
       const [prefix, entryId] = e.target.id.split("--")
-      deleteJournalEntry(entryId)
+      const cE = new CustomEvent("deleteRequested", {
+          detail: {
+              entryId: entryId
+          }
+      })
+      eventHub.dispatchEvent(cE)
   }  
+})
+
+eventHub.addEventListener("click", e => {
+    if (e.target.id.includes("editButton--")) {
+        const [x, entryId] = e.target.id.split("--")
+        const cE = new CustomEvent("editRequested", {
+            detail: {
+                entryId: parseInt(entryId)
+            }
+        })
+        eventHub.dispatchEvent(cE)
+    }
 })

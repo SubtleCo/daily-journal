@@ -20,16 +20,34 @@ export const useJournalEntries = () => {
     return sortedByDate;
 }
 
+export const getJournalEntry = entryId => {
+    const allEntries = useJournalEntries()
+    return allEntries.find(entry => entry.id === entryId)
+}
+
 export const saveJournalEntry = (entryObj) => {
-    return fetch("http://localhost:8088/entries", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(entryObj)
-    })
-        .then( () => getJournalEntries())
-        .then(dispatchStateChangeEvent)
+    if (entryObj.id === "") {
+        return fetch("http://localhost:8088/entries", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(entryObj)
+        })
+            .then( () => getJournalEntries())
+            .then(dispatchStateChangeEvent)
+    } else {
+        return fetch(`http://localhost:8088/entries/${entryObj.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(entryObj)
+        })
+            .then( () => getJournalEntries())
+            .then(dispatchStateChangeEvent)
+
+    }
 }
 
 export const deleteJournalEntry = entryId => {
@@ -38,3 +56,8 @@ export const deleteJournalEntry = entryId => {
     })
     .then(dispatchStateChangeEvent)
 }
+
+eventHub.addEventListener("deleteRequested", e => {
+    const entryId = e.detail.entryId
+    deleteJournalEntry(entryId)
+})
