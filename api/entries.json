@@ -2,11 +2,19 @@
   "entries": [
     {
       "date": "2021-02-12",
-      "concept": "Deleting Journal Entries",
-      "entry": "Looks like id: 1 is forever lost to the wind.",
-      "moodId": 3,
+      "concept": "Here's another one",
+      "entry": "Testing out entry divider. Testing Edit",
+      "moodId": 2,
+      "instructorId": 1,
+      "id": 2
+    },
+    {
+      "date": "",
+      "concept": "OK then hi",
+      "entry": "Hello it is snowing, test, test, hello!",
+      "moodId": 1,
       "instructorId": 3,
-      "id": 1
+      "id": 3
     },
     {
       "date": "2021-02-12",
@@ -14,7 +22,7 @@
       "entry": "Testing out entry divider",
       "moodId": 2,
       "instructorId": 1,
-      "id": 2
+      "id": 4
     }
   ],
   "moods": [
