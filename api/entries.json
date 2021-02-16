@@ -98,5 +98,54 @@
       "first_name": "Scortt",
       "last_name": "Silver"
     }
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "subject":"API"
+    },
+    {
+      "id": 2,
+      "subject":"components"
+    },
+    {
+      "id": 3,
+      "subject":"fetch"
+    },
+    {
+      "id": 4,
+      "subject":"async"
+    },
+    {
+      "id": 5,
+      "subject":"promises"
+    }
+  ],
+  "entryTags": [
+    {
+      "id": 1,
+      "entryId": 2,
+      "tagId": 2
+    },
+    {
+      "id": 2,
+      "entryId": 3,
+      "tagId": 1
+    },
+    {
+      "id": 3,
+      "entryId": 2,
+      "tagId": 2
+    },
+    {
+      "id": 4,
+      "entryId": 4,
+      "tagId": 3
+    },
+    {
+      "id": 5,
+      "entryId": 4,
+      "tagId": 1
+    }
   ]
 }

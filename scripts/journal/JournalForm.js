@@ -33,6 +33,8 @@ export const JournalFormComponent = () => {
                         </select>
                         <label for="concepts">Concepts Covered</label>
                         <input type="text" name="concepts" id="concepts" class="input-left" size="50">
+                        <label for="tags">Tags</label>
+                        <input type="text" name="tags" id="tags" class="input-left" size="50">
                         <label for="entryContent">Journal Entry</label>
                         <textarea name="entryContent" id="entryContent" cols="30" rows="10"></textarea>
                         <input id="entryForm__submit" type="submit" value="Record Jounral Entry" class="button">
