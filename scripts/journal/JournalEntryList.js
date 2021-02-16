@@ -17,6 +17,7 @@ export const EntryList = moodId => {
             const allTags = useTags()
             const entryTags = useEntryTags()
             let matchedEntries
+            // debugger
             if (!moodId) {
                 matchedEntries = [...entries]
             } else {
@@ -29,7 +30,7 @@ export const EntryList = moodId => {
                     return tagObject
                 })
 
-                JournalEntryComponent(entry, matchedTags)
+                return JournalEntryComponent(entry, matchedTags)
             }).join("");
         })
 }

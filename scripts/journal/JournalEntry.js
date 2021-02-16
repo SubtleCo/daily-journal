@@ -6,7 +6,7 @@ export const JournalEntryComponent = (entry, tags) => {
 
     const tagsHTML = tags.map(tag => `<p class="tagDisplay">${tag.subject}</p>`).join("")
     return `
-        <article class="entry">
+        <article class="entry" id="entry--${entry.id}>
             <div class="entry__header">
                 <h3 class="entry__concepts">${entry.concept}</h3>
                 <div class="entry__header__right">

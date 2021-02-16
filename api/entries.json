@@ -25,11 +25,11 @@
       "id": 4
     },
     {
-      "date": "2021-02-02",
-      "concept": "testing tags",
-      "entry": "please work",
-      "moodId": 3,
-      "instructorId": 3,
+      "date": "2021-02-16",
+      "concept": "Adding tags to entries!",
+      "entry": "I'm so excited that this actually works.",
+      "moodId": 2,
+      "instructorId": 1,
       "id": 5
     }
   ],
@@ -127,6 +127,14 @@
     {
       "id": 5,
       "subject": "promises"
+    },
+    {
+      "subject": "json",
+      "id": 6
+    },
+    {
+      "subject": "json-server",
+      "id": 7
     }
   ],
   "entryTags": [
@@ -143,7 +151,7 @@
     {
       "id": 3,
       "entryId": 2,
-      "tagId": 2
+      "tagId": 4
     },
     {
       "id": 4,
@@ -154,6 +162,26 @@
       "id": 5,
       "entryId": 4,
       "tagId": 1
+    },
+    {
+      "tagId": 6,
+      "entryId": 5,
+      "id": 6
+    },
+    {
+      "tagId": 7,
+      "entryId": 5,
+      "id": 7
+    },
+    {
+      "tagId": 1,
+      "entryId": 5,
+      "id": 8
+    },
+    {
+      "tagId": 4,
+      "entryId": 5,
+      "id": 9
     }
   ]
 }

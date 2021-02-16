@@ -1,3 +1,5 @@
+import { useTags, getTags } from "../tags/TagProvider.js"
+
 const eventHub = document.querySelector('#container')
 
 export const dispatchStateChangeEvent = () => {
@@ -38,8 +40,11 @@ export const saveJournalEntry = (entryObj, tags) => {
             .then( res => res.json())
             .then( parsedResponse => {
                 const newPostId = parsedResponse.id
-                console.log(newPostId)
                 getJournalEntries()
+                return newPostId
+            })
+            .then(newEntryId => {
+                assignTags(newEntryId, tags)
             })
             .then(dispatchStateChangeEvent)
     } else {
@@ -54,6 +59,28 @@ export const saveJournalEntry = (entryObj, tags) => {
             .then(dispatchStateChangeEvent)
 
     }
+}
+
+export const assignTags = (entryId, tagStrings) => {
+    getTags().then( () => {
+        const allTags = useTags()
+        const tagObjs = tagStrings.map(tS => {
+            return allTags.find( tag => tag.subject === tS )
+        })
+        tagObjs.forEach( tag => {
+            const tagEntryObject = {
+                tagId: tag.id,
+                entryId: entryId
+            }
+            return fetch(`http://localhost:8088/entryTags`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(tagEntryObject)
+            })
+        })
+    })
 }
 
 export const deleteJournalEntry = entryId => {
