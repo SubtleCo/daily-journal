@@ -23,6 +23,14 @@
       "moodId": 2,
       "instructorId": 1,
       "id": 4
+    },
+    {
+      "date": "2021-02-02",
+      "concept": "testing tags",
+      "entry": "please work",
+      "moodId": 3,
+      "instructorId": 3,
+      "id": 5
     }
   ],
   "moods": [
@@ -102,23 +110,23 @@
   "tags": [
     {
       "id": 1,
-      "subject":"API"
+      "subject": "api"
     },
     {
       "id": 2,
-      "subject":"components"
+      "subject": "components"
     },
     {
       "id": 3,
-      "subject":"fetch"
+      "subject": "fetch"
     },
     {
       "id": 4,
-      "subject":"async"
+      "subject": "async"
     },
     {
       "id": 5,
-      "subject":"promises"
+      "subject": "promises"
     }
   ],
   "entryTags": [

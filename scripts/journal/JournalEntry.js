@@ -2,7 +2,9 @@ import { deleteJournalEntry } from "./JournalDataProvider.js"
 
 const eventHub = document.querySelector('#container')
 
-export const JournalEntryComponent = (entry) => {
+export const JournalEntryComponent = (entry, tags) => {
+
+    const tagsHTML = tags.map(tag => `<p class="tagDisplay">${tag.subject}</p>`).join("")
     return `
         <article class="entry">
             <div class="entry__header">
@@ -14,6 +16,7 @@ export const JournalEntryComponent = (entry) => {
                 </div>  <!-- entry__header -->
             </div> <!-- entry__header -->
             <p class="entry__text">${entry.entry}</p>
+            <div class="tagsContainer">${tagsHTML}</div>
             <div class="entry__buttons">
                 <button id="editButton--${entry.id}" class="button button-normal">Edit</button>
                 <button id="deleteButton--${entry.id}" class="button button-warn">Delete</button>

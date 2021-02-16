@@ -1,6 +1,6 @@
 const eventHub = document.querySelector('#container')
 
-const dispatchStateChangeEvent = () => {
+export const dispatchStateChangeEvent = () => {
     eventHub.dispatchEvent(new CustomEvent("journalStateChanged"))
 }
 
@@ -25,7 +25,8 @@ export const getJournalEntry = entryId => {
     return allEntries.find(entry => entry.id === entryId)
 }
 
-export const saveJournalEntry = (entryObj) => {
+
+export const saveJournalEntry = (entryObj, tags) => {
     if (entryObj.id === "") {
         return fetch("http://localhost:8088/entries", {
             method: "POST",
@@ -34,7 +35,12 @@ export const saveJournalEntry = (entryObj) => {
             },
             body: JSON.stringify(entryObj)
         })
-            .then( () => getJournalEntries())
+            .then( res => res.json())
+            .then( parsedResponse => {
+                const newPostId = parsedResponse.id
+                console.log(newPostId)
+                getJournalEntries()
+            })
             .then(dispatchStateChangeEvent)
     } else {
         return fetch(`http://localhost:8088/entries/${entryObj.id}`, {
