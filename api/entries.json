@@ -23,6 +23,14 @@
       "moodId": 2,
       "instructorId": 1,
       "id": 4
+    },
+    {
+      "date": "2021-02-16",
+      "concept": "Adding tags to entries!",
+      "entry": "I'm so excited that this actually works.",
+      "moodId": 2,
+      "instructorId": 1,
+      "id": 5
     }
   ],
   "moods": [
@@ -97,6 +105,83 @@
       "id": 4,
       "first_name": "Scortt",
       "last_name": "Silver"
+    }
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "subject": "api"
+    },
+    {
+      "id": 2,
+      "subject": "components"
+    },
+    {
+      "id": 3,
+      "subject": "fetch"
+    },
+    {
+      "id": 4,
+      "subject": "async"
+    },
+    {
+      "id": 5,
+      "subject": "promises"
+    },
+    {
+      "subject": "json",
+      "id": 6
+    },
+    {
+      "subject": "json-server",
+      "id": 7
+    }
+  ],
+  "entryTags": [
+    {
+      "id": 1,
+      "entryId": 2,
+      "tagId": 2
+    },
+    {
+      "id": 2,
+      "entryId": 3,
+      "tagId": 1
+    },
+    {
+      "id": 3,
+      "entryId": 2,
+      "tagId": 4
+    },
+    {
+      "id": 4,
+      "entryId": 4,
+      "tagId": 3
+    },
+    {
+      "id": 5,
+      "entryId": 4,
+      "tagId": 1
+    },
+    {
+      "tagId": 6,
+      "entryId": 5,
+      "id": 6
+    },
+    {
+      "tagId": 7,
+      "entryId": 5,
+      "id": 7
+    },
+    {
+      "tagId": 1,
+      "entryId": 5,
+      "id": 8
+    },
+    {
+      "tagId": 4,
+      "entryId": 5,
+      "id": 9
     }
   ]
 }

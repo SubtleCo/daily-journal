@@ -12,6 +12,13 @@
 
 .entry__header__right {
     flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.entry__header__right > * {
+    margin: 5px;
 }
 
 .entry__buttons {
@@ -38,3 +45,15 @@
     width: 80%;
     height: 1px;
 }
+
+.tagsContainer{
+    display: flex;
+}
+
+.tagDisplay {
+    background-color: lightgray;
+    border-radius: 2px;
+    margin: 5px 14px;
+    padding: 5px;
+}
+

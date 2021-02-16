@@ -1,6 +1,7 @@
 import { getMoods, useMoods } from '../moods/MoodProvider.js'
 import { getInstructors, useInstructors } from '../instructors/InstructorProvider.js'
 import { getJournalEntry, saveJournalEntry } from './JournalDataProvider.js'
+import { saveTags } from '../tags/TagProvider.js'
 
 const targetElement = document.querySelector('.containerLeft__entryForm')
 const eventHub = document.querySelector('#container')
@@ -33,6 +34,8 @@ export const JournalFormComponent = () => {
                         </select>
                         <label for="concepts">Concepts Covered</label>
                         <input type="text" name="concepts" id="concepts" class="input-left" size="50">
+                        <label for="tags">Tags</label>
+                        <input type="text" name="tags" id="tags" class="input-left" size="50">
                         <label for="entryContent">Journal Entry</label>
                         <textarea name="entryContent" id="entryContent" cols="30" rows="10"></textarea>
                         <input id="entryForm__submit" type="submit" value="Record Jounral Entry" class="button">
@@ -57,18 +60,30 @@ eventHub.addEventListener("input", e => {
 eventHub.addEventListener("click", e => {
     if (e.target.id === "entryForm__submit") {
         e.preventDefault()
+
+        // Create array of tags
+        const tagString = document.querySelector("#tags").value.toLowerCase()
+        const tagsArray = tagString.replace(/\s/g, "").split(",")
+
+        // create entry object to save
         const newEntryObj = {
             date: document.querySelector("#journalDate").value,
             concept: document.querySelector("#concepts").value,
             entry: document.querySelector("#entryContent").value,
             moodId: parseInt(document.querySelector("#mood").value),
             instructorId: parseInt(document.querySelector("#instructor").value),
-            id: parseInt(document.querySelector("#entryId").value)
+            id: document.querySelector("#entryId").value
         }
+        // check for the phrase "bad word"
         scanForLanguage(document.querySelector("#concepts").value)
         scanForLanguage(document.querySelector("#entryContent").value)
+
+        // empty all input fields
         document.querySelector("#entryForm").reset()
-        saveJournalEntry(newEntryObj)
+
+        // talk to API database
+        if ( tagsArray[0] !== "") saveTags(tagsArray)
+        saveJournalEntry(newEntryObj, tagsArray)
     }
 })
 

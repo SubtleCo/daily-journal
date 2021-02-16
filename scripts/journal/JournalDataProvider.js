@@ -1,6 +1,8 @@
+import { useTags, getTags } from "../tags/TagProvider.js"
+
 const eventHub = document.querySelector('#container')
 
-const dispatchStateChangeEvent = () => {
+export const dispatchStateChangeEvent = () => {
     eventHub.dispatchEvent(new CustomEvent("journalStateChanged"))
 }
 
@@ -25,7 +27,8 @@ export const getJournalEntry = entryId => {
     return allEntries.find(entry => entry.id === entryId)
 }
 
-export const saveJournalEntry = (entryObj) => {
+
+export const saveJournalEntry = (entryObj, tags) => {
     if (entryObj.id === "") {
         return fetch("http://localhost:8088/entries", {
             method: "POST",
@@ -34,7 +37,15 @@ export const saveJournalEntry = (entryObj) => {
             },
             body: JSON.stringify(entryObj)
         })
-            .then( () => getJournalEntries())
+            .then( res => res.json())
+            .then( parsedResponse => {
+                const newPostId = parsedResponse.id
+                getJournalEntries()
+                return newPostId
+            })
+            .then(newEntryId => {
+                assignTags(newEntryId, tags)
+            })
             .then(dispatchStateChangeEvent)
     } else {
         return fetch(`http://localhost:8088/entries/${entryObj.id}`, {
@@ -48,6 +59,28 @@ export const saveJournalEntry = (entryObj) => {
             .then(dispatchStateChangeEvent)
 
     }
+}
+
+export const assignTags = (entryId, tagStrings) => {
+    getTags().then( () => {
+        const allTags = useTags()
+        const tagObjs = tagStrings.map(tS => {
+            return allTags.find( tag => tag.subject === tS )
+        })
+        tagObjs.forEach( tag => {
+            const tagEntryObject = {
+                tagId: tag.id,
+                entryId: entryId
+            }
+            return fetch(`http://localhost:8088/entryTags`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(tagEntryObject)
+            })
+        })
+    })
 }
 
 export const deleteJournalEntry = entryId => {
